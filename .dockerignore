@@ -1,0 +1,11 @@
+**
+!global.json
+!src/
+!src/BookingApp.Web/
+!src/BookingApp.Web/**
+**/bin/
+**/obj/
+**/*.user
+**/secrets.json
+**/appsettings.Local.json
+**/appsettings.*.Local.json

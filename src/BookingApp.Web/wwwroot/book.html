@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book · Workplace booking</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="/css/site.css" rel="stylesheet">
+  <script type="module" src="/js/book.js"></script>
+</head>
+<body>
+  <a href="#main" class="visually-hidden-focusable">Skip to content</a>
+  <header class="border-bottom"><nav aria-label="Main" data-navigation class="container nav align-items-center gap-2 py-2"></nav></header>
+  <main id="main" class="container py-4">
+    <h1>Book</h1>
+    <p data-time-zone class="text-body-secondary"></p>
+    <div data-errors class="alert alert-danger" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+    <p id="page-status" role="status" aria-live="polite">Loading…</p>
+    <section id="booking-draft-slot" class="mb-4" aria-labelledby="draft-heading" hidden>
+      <h2 id="draft-heading" class="h4">Draft a booking</h2>
+      <form id="draft-form" novalidate>
+        <div data-errors class="alert alert-danger" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+        <label for="draft-text" class="form-label">What would you like to book?</label>
+        <textarea id="draft-text" name="text" class="form-control mb-2" rows="2" maxlength="500" placeholder="Book a room for 6 people tomorrow from 14:00 to 15:30"></textarea>
+        <button type="submit" class="btn btn-outline-primary">Draft booking</button>
+      </form>
+      <p id="draft-status" class="mt-2" role="status" aria-live="polite"></p>
+      <div id="draft-choices" class="d-flex flex-wrap gap-2 mb-2"></div>
+      <form id="draft-booking-form" novalidate hidden>
+        <h3 id="draft-selected-resource" class="h5"></h3>
+        <p id="draft-confirm-line"></p>
+        <p id="draft-time-hint" class="form-text"></p>
+        <label for="draft-title" class="form-label">Title (optional)</label>
+        <input id="draft-title" name="title" type="text" maxlength="200" class="form-control mb-2">
+        <button type="submit" class="btn btn-primary">Book</button>
+      </form>
+      <section id="draft-confirmation" class="alert alert-success mt-3" role="status" aria-live="polite" tabindex="-1" hidden></section>
+    </section>
+    <div id="book-content" hidden>
+      <form id="availability-form" novalidate>
+        <h2 class="h4">Find a resource</h2>
+        <div data-errors class="alert alert-danger" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+        <div class="row g-3">
+          <div class="col-md-4"><label for="type" class="form-label">Resource type</label><select id="type" name="type" class="form-select"><option value="Room">Room</option><option value="Car">Car</option><option value="Equipment">Equipment</option><option value="Catering">Catering</option></select></div>
+          <div class="col-md-4" id="seats-group"><label for="min-seats" class="form-label">Minimum seats (optional)</label><input id="min-seats" name="minSeats" type="number" min="1" step="1" class="form-control"></div>
+          <div class="col-md-4" id="quantity-group" hidden><label for="quantity" class="form-label">Quantity</label><input id="quantity" name="quantity" type="number" min="1" step="1" value="1" class="form-control"></div>
+          <div class="col-sm-6 col-lg-3"><label for="start-date" class="form-label">Start date</label><input id="start-date" name="startDate" type="date" class="form-control"></div>
+          <div class="col-sm-6 col-lg-3"><label for="start-time" class="form-label">Start time</label><input id="start-time" name="startTime" type="time" step="900" value="09:00" class="form-control"></div>
+          <div class="col-sm-6 col-lg-3"><label for="end-date" class="form-label">End date</label><input id="end-date" name="endDate" type="date" class="form-control"></div>
+          <div class="col-sm-6 col-lg-3"><label for="end-time" class="form-label">End time</label><input id="end-time" name="endTime" type="time" step="900" value="10:00" class="form-control"></div>
+        </div>
+        <p class="form-text">Choose times on a 15-minute boundary. Room bookings use one room; quantity applies to other resource pools.</p>
+        <button type="submit" class="btn btn-primary">Check availability</button>
+      </form>
+      <section class="mt-4" aria-labelledby="results-heading">
+        <h2 id="results-heading" class="h4">Resources</h2>
+        <p id="availability-status" role="status" aria-live="polite">Choose dates and times to see availability.</p>
+        <p id="checked-times"></p>
+        <div id="resources" class="row g-3"></div>
+      </section>
+      <form id="booking-form" class="mt-4" novalidate hidden>
+        <h2 class="h4">Confirm your booking</h2>
+        <div data-errors class="alert alert-danger" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+        <p id="selected-resource"></p>
+        <div class="mb-3"><label for="title" class="form-label">Title (optional)</label><input id="title" name="title" type="text" class="form-control"></div>
+        <button type="submit" class="btn btn-primary">Book resource</button>
+      </form>
+      <section id="confirmation" class="alert alert-success mt-4" role="status" aria-live="polite" tabindex="-1" hidden></section>
+    </div>
+    <noscript>Enable JavaScript to book a resource.</noscript>
+  </main>
+</body>
+</html>

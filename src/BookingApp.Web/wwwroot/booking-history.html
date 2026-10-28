@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booking history · Workplace booking</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="/css/site.css" rel="stylesheet">
+  <script type="module" src="/js/booking-history.js"></script>
+</head>
+<body>
+  <a href="#main" class="visually-hidden-focusable">Skip to content</a>
+  <header class="border-bottom"><nav aria-label="Main" data-navigation class="container nav align-items-center gap-2 py-2"></nav></header>
+  <main id="main" class="container py-4">
+    <h1>Booking history</h1>
+    <p data-time-zone class="text-body-secondary"></p>
+    <div data-errors class="alert alert-danger" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+    <p id="page-status" role="status" aria-live="polite">Loading…</p>
+    <div id="admin-content" hidden>
+
+      <form id="history-form" novalidate><div data-errors class="alert alert-danger" role="alert" aria-live="assertive" tabindex="-1" hidden></div><fieldset id="history-fields"><legend class="visually-hidden">History filters</legend><div class="row">
+      <div class="col-md-6 mb-3"><label for="resourceId" class="form-label">Resource</label><select id="resourceId" name="resourceId" class="form-select"><option value="">All resources</option></select></div><div class="col-md-6 mb-3"><label for="userId" class="form-label">User</label><select id="userId" name="userId" class="form-select"><option value="">All users</option></select></div>
+      <div class="col-md-6 mb-3"><label for="from" class="form-label">From (inclusive office date, optional)</label>
+<input id="from" name="from" type="date" class="form-control" >
+</div><div class="col-md-6 mb-3"><label for="to" class="form-label">To (inclusive office date, optional)</label>
+<input id="to" name="to" type="date" class="form-control" >
+</div>
+      </div><p class="form-text">Includes confirmed and cancelled bookings overlapping the selected dates. Empty dates leave that boundary unrestricted.</p>
+      <button type="submit" class="btn btn-primary">Search bookings</button></fieldset></form>
+      <div class="mt-4"><div class="table-responsive"><table class="table table-striped align-middle"><caption>History</caption><thead><tr><th scope="col">Resource</th><th scope="col">User</th><th scope="col">Title</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Quantity</th><th scope="col">Status</th></tr></thead><tbody id="history-body"></tbody></table></div></div>
+    </div>
+    <noscript>Enable JavaScript to use this page.</noscript>
+  </main>
+</body>
+</html>
